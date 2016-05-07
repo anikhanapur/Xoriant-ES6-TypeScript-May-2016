@@ -114,9 +114,22 @@ var program = function () {
 		};
 	}();
 
+	function addAsyncPromise(x, y) {
+		console.log('     [Service Provider] processing ' + x + ' and ' + y);
+
+		var promise = new Promise(function (resolveFn, rejectFn) {
+			setTimeout(function () {
+				var result = x + y;
+				console.log('     [Service Provider] returning result');
+				resolveFn(result);
+			}, 3000);
+		});
+		return promise;
+	}
 	return {
 		addSyncClient: addSyncClient,
 		addAsyncClient: addAsyncClient,
-		addAsyncEvents: addAsyncEvents
+		addAsyncEvents: addAsyncEvents,
+		addAsyncPromise: addAsyncPromise
 	};
 }();

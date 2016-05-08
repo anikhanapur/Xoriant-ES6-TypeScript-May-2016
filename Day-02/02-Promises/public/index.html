@@ -4,21 +4,83 @@
 	<meta charset="UTF-8">
 	<title>Products</title>
 	<script>
+	function myFetch(url){
+		var promise = new Promise(function(resolve, reject){
+			var req = new XMLHttpRequest();
+			req.open("GET", url);
+			req.send();
+			req.onreadystatechange = function() {
+			  if (req.readyState == 4 && req.status == 200) {
+			    resolve(eval(req.responseText));
+			  }
+			};	
+		});
+		return promise;
+	}
 	var api = (function(){
 		function getProducts(){
-			//use the fetch api
+			/*var apiPromise = new Promise(function(resolve, reject){
+				var promise = fetch("http://localhost:3000/products");
+				promise.then(function(response){
+				   var p = response.json();
+				   p.then(function(data){
+				   		resolve(data);
+				   });
+				});	
+			});
+			return apiPromise;*/
+
+
+
+			/*var promise = fetch("http://localhost:3000/products");
+			var p2 = promise.then(function(response){
+			   var p = response.json();
+			   var resultPromise = p.then(function(data){
+			   		return data;
+			   });
+               return resultPromise;
+			});
+			return p2;*/
+
+			/*var deferred = Promise.defer();
+			
+			
+			var promise = fetch("http://localhost:3000/products");
+			promise.then(function(response){
+			   var p = response.json();
+			   p.then(function(data){
+			   		deferred.resolve(data);
+			   });
+			});	
+		
+			return deferred.promise;*/
+
+			/*return fetch("http://localhost:3000/products")
+				.then(function(response){
+			   		return response.json()
+			   			.then(function(data){
+			   				return data;
+			   			})
+				});*/
+
+				
+			return myFetch("http://localhost:3000/products");
 		}
 		return {
 			getProducts : getProducts
 		}
-	})
+	})();
+
 	window.addEventListener("DOMContentLoaded", init);
 	function init(){
 		document.getElementById("btnGetProducts").addEventListener("click", onBtnGetProductsClick);
 	}
 	function onBtnGetProductsClick(){
 		//get the products from api.getProducts and display a table
-		console.table()
+		api.getProducts().then(function(products){
+			console.table(products);
+		});
+		
 	}
 
 

@@ -1,0 +1,15 @@
+ From var to let/const
+ From IIFEs to blocks
+ From concatenating strings to template literals
+ Multi-line strings
+ From function expressions to arrow functions
+ Handling Multiple return values via arrays
+ Handling Multiple return values via objects
+ From for to forEach() to for-of
+ Handling parameter default values
+ Handling named parameters
+ From arguments to rest parameters
+ From apply() to the spread operator
+ From concat() to the spread operator (...)
+ From function expressions in object literals to method definitions
+ From constructors to classes

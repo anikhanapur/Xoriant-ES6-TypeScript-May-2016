@@ -4,6 +4,23 @@
 	<meta charset="UTF-8">
 	<title>Products</title>
 	<script>
+	var api = (function(){
+		function getProducts(){
+			//use the fetch api
+		}
+		return {
+			getProducts : getProducts
+		}
+	})
+	window.addEventListener("DOMContentLoaded", init);
+	function init(){
+		document.getElementById("btnGetProducts").addEventListener("click", onBtnGetProductsClick);
+	}
+	function onBtnGetProductsClick(){
+		//get the products from api.getProducts and display a table
+		console.table()
+	}
+
 
 	</script>
 </head>
